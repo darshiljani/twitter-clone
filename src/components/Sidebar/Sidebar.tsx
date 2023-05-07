@@ -42,7 +42,7 @@ function Sidebar() {
   }, [darkMode]);
 
   return (
-    <div className="flex w-[20vw] flex-col justify-between border-r py-6 ps-4">
+    <div className="flex w-[20vw] flex-col justify-between py-6 ps-4">
       <div className="flex flex-col gap-4">
         <NavLink
           icon={FaTwitter}
