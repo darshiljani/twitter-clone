@@ -44,7 +44,11 @@ function Sidebar() {
   return (
     <div className="flex w-[20vw] flex-col justify-between border-r py-6 ps-4">
       <div className="flex flex-col gap-4">
-        <NavLink icon={FaTwitter} href="/" className="text-3xl text-twitter" />
+        <NavLink
+          icon={FaTwitter}
+          href="/"
+          className="w-fit text-3xl text-twitter"
+        />
         <NavLink icon={TbHash} title="Explore" href="/explore" />
         <NavLink icon={FiSettings} title="Settings" href="/settings" />
         <div
@@ -57,7 +61,6 @@ function Sidebar() {
       </div>
       <div className="p-2 text-2xl font-bold">
         <SignedIn>
-          {/* Mount the UserButton component */}
           <UserButton
             appearance={{
               elements: {
@@ -76,7 +79,6 @@ function Sidebar() {
           />
         </SignedIn>
         <SignedOut>
-          {/* Signed out users get sign in button */}
           <div className="flex cursor-pointer items-center gap-2">
             <FaRegUserCircle />
             <SignInButton />
