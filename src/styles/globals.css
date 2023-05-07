@@ -1,0 +1,17 @@
+@tailwind base;
+@layer base {
+  html {
+    @apply font-sans;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+html {
+  transition: all 250ms ease-in-out;
+}
+
+html.dark {
+  background-color: #000;
+  color: #fff;
+}
