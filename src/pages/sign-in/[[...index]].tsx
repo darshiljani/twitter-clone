@@ -15,7 +15,9 @@ const SignInPage = () => (
         signUpUrl="/sign-up"
         appearance={{
           elements: {
-            formButtonPrimary: "bg-twitter text-sm normal-case",
+            formButtonPrimary:
+              "bg-twitter text-sm normal-case hover:bg-blue-800",
+            footerActionLink: "text-blue-600",
           },
         }}
       />

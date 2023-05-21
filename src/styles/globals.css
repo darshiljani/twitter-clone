@@ -9,8 +9,19 @@
 
 html {
   transition: all 250ms ease-in-out;
+  @apply overflow-x-hidden;
+  @apply overflow-y-scroll;
 }
 
 html.dark {
   @apply bg-black text-slate-100;
+}
+
+img {
+  width: auto;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+  @apply hidden;
 }

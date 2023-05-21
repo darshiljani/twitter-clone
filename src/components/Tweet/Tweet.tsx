@@ -11,31 +11,33 @@ type PostWithUser = RouterOutputs["posts"]["getAll"][number];
 
 function Tweet({ post, author }: PostWithUser) {
   const [isLiked, setLiked] = useState(false);
-  console.log("author ==>", author);
 
   return (
-    <div className="flex gap-6 border-b p-10">
+    <div className="flex gap-6 border-b border-b-slate-500 p-4 dark:border-b-slate-300 lg:p-10">
       <Image
         src={author.profilePicture}
-        alt="Profile picture"
+        alt={`@{author?.username}'s profile picture`}
         width={48}
         height={48}
-        className="h-14 w-14 rounded-full"
+        className="aspect-square h-14 rounded-circle"
       />
       <div className="flex w-full flex-col gap-2">
-        <div className="flex items-center gap-2 text-slate-400 dark:text-slate-500">
+        <div className="flex flex-row gap-2 text-slate-400 dark:text-slate-500 lg:items-center">
           <div className="font-bold text-black dark:text-white">
             {`${author?.firstName} ${author?.lastName}`}
           </div>
-          <div className="flex items-center gap-1">
+          <div className="lg:text-md flex flex-row gap-1 text-sm lg:items-center">
             <div className="font-light">@{author?.username}</div>
-            <div className="font-thin">·</div>
+            <div className="font-thin lg:block">·</div>
             <div>{dayjs(post.createdAt).fromNow()}</div>
           </div>
         </div>
         <div>{post.content}</div>
         <div className="flex gap-4 text-xl">
-          <button onClick={() => setLiked((liked) => !liked)}>
+          <button
+            onClick={() => setLiked((liked) => !liked)}
+            className="like-button"
+          >
             {isLiked ? (
               <AiFillHeart className="text-red-600" />
             ) : (

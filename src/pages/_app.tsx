@@ -1,23 +1,44 @@
 import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
-import "@fontsource/inter";
+import "@fontsource/poppins";
+import Head from "next/head";
 import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
+import { useState, useEffect } from "react";
+import { neobrutalism, dark } from "@clerk/themes";
 import Layout from "~/components/Layout/Layout";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    const doc = document.documentElement;
+    darkMode === true
+      ? doc?.classList.remove("dark")
+      : doc?.classList.add("dark");
+  }, [darkMode]);
+
   return (
-    <ClerkProvider
-      {...pageProps}
-      appearance={{
-        baseTheme: dark,
-      }}
-    >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ClerkProvider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content={`width=device-width, initial-scale=${
+            typeof window !== "undefined" ? 2 / window.devicePixelRatio : 1
+          }, maximum-scale=1.0`}
+        />
+      </Head>
+      <ClerkProvider
+        {...pageProps}
+        appearance={{
+          baseTheme: darkMode ? dark : neobrutalism,
+        }}
+      >
+        <Layout darkMode={darkMode} changeTheme={setDarkMode}>
+          <Component {...pageProps} />
+        </Layout>
+      </ClerkProvider>
+    </>
   );
 };
 

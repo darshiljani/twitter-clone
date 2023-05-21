@@ -11,7 +11,10 @@ export default {
         twitter: "#1DA1F2",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        circle: "50%",
       },
     },
   },

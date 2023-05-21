@@ -14,7 +14,7 @@ model Post {
     id          String      @id @default(cuid())
     createdAt   DateTime    @default(now())
 
-    content     String      
+    content     String     
     authorId      String
 
     @@index ([authorId])
