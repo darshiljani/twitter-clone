@@ -32,9 +32,15 @@ const Home: NextPage = () => {
         ) : (
           <div className="flex h-full w-full flex-col">
             <CreateTweet />
-            {...data?.map(({ post, author }) => (
-              <Tweet key={post.id} post={post} author={author} />
-            ))}
+            {data?.length > 0 ? (
+              data?.map(({ post, author }) => (
+                <Tweet key={post.id} post={post} author={author} />
+              ))
+            ) : (
+              <div className="mx-auto p-10 text-2xl text-gray-500">
+                Be the first to post a tweet!
+              </div>
+            )}
           </div>
         )}
       </div>

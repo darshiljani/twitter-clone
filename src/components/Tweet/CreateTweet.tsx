@@ -29,7 +29,7 @@ const CreateTweet = () => {
             alt="Profile image"
             width={48}
             height={48}
-            className="aspect-square rounded-full lg:h-14"
+            className="aspect-square rounded-circle lg:h-14"
           />
           <input
             type="text"
