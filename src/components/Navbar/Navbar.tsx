@@ -112,6 +112,16 @@ function Navbar({
                   ? `${window.location.origin}/profile`
                   : undefined
               }
+              afterSignOutUrl={
+                typeof window !== "undefined"
+                  ? `${window.location.origin}/sign-in`
+                  : undefined
+              }
+              afterMultiSessionSingleSignOutUrl={
+                typeof window !== "undefined"
+                  ? `${window.location.origin}/sign-in`
+                  : undefined
+              }
             />
           </SignedIn>
           <SignedOut>

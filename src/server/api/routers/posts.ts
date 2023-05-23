@@ -32,25 +32,32 @@ export const postsRouter = createTRPCRouter({
       })
     ).map(filterUserForClient);
 
-    return posts.map((post: Post) => {
-      const author = users.find((user) => user.id === post.authorId);
+    return posts.length > 0
+      ? posts.map((post: Post) => {
+          const author = users.find((user) => user.id === post.authorId);
 
-      if (!author || !author.username || !author.firstName || !author.lastName)
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-          message: "Author for post not found",
-        });
+          if (
+            !author ||
+            !author.username ||
+            !author.firstName ||
+            !author.lastName
+          )
+            throw new TRPCError({
+              code: "INTERNAL_SERVER_ERROR",
+              message: "Author for post not found",
+            });
 
-      return {
-        post,
-        author: {
-          ...author,
-          username: author.username,
-          firstName: author.firstName,
-          lastName: author.lastName,
-        },
-      };
-    });
+          return {
+            post,
+            author: {
+              ...author,
+              username: author.username,
+              firstName: author.firstName,
+              lastName: author.lastName,
+            },
+          };
+        })
+      : [];
   }),
 
   create: privateProcedure
