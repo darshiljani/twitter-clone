@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
 import { neobrutalism, dark } from "@clerk/themes";
 import Layout from "~/components/Layout/Layout";
+import { Analytics } from "@vercel/analytics/react";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
@@ -38,6 +39,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </Layout>
       </ClerkProvider>
+      <Analytics />
     </>
   );
 };
