@@ -12,7 +12,7 @@ function Index() {
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center py-6">
+    <div className="isolate -z-[1] flex min-h-screen w-full items-center justify-center py-6">
       <SignedIn>
         {/* Signed in users will see their user profile */}
         <UserProfile />
